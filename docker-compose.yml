@@ -1,0 +1,7 @@
+version: '3'
+services:
+  mockapi:
+    container_name: scrabble-mock-api
+    image: elderops/scrabble-mock-api:latest
+    ports:
+      - "3000:3000"

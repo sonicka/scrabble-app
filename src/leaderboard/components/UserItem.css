@@ -1,0 +1,31 @@
+.user-item-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+  margin: 15px auto;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #443a31;
+  border-radius: 6px;
+}
+
+.user-item-name {
+  display: block;
+  width: 100%;
+  line-height: 30px;
+  font-size: 22px;
+  font-weight: bold;
+  color: black;
+}
+
+.user-item-stats {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 10px 0;
+  padding: 0 30px;
+  font-size: 18px;
+  color: black;
+}
