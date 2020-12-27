@@ -21,7 +21,7 @@ const UserPopup = ({ hideUserDetail, user, game, gameIndex, lastIndex, setGame, 
   const fetchGameWonByUser = async (direction) => {
     let nextIndex = gameIndex;
     if (direction) {
-      nextIndex = direction === PREV ? gameIndex-1 : gameIndex+1;
+      nextIndex = direction === PREV ? gameIndex - 1 : gameIndex + 1;
       setGameIndex(nextIndex)
     }
     let response = await getGamesWonByUser(userId, nextIndex);
@@ -42,7 +42,15 @@ const UserPopup = ({ hideUserDetail, user, game, gameIndex, lastIndex, setGame, 
           <UserDetailsSection name={name} username={username} email={email} />
           <UserStats wins={wins} averageScore={averageScore} losses={losses} customClass='user-stats'/>
           <HighestScoreSection name={name} won={won} score={score} opponent={opponentName} date={date ? new Date(date).toLocaleString() : ''}/>
-          {game && <WonGamesSection userId={userId} name={name} game={game} fetchGameWonByUser={fetchGameWonByUser} gameIndex={gameIndex} lastIndex={lastIndex}/>}
+          {game && ( 
+            <WonGamesSection 
+              userId={userId}
+              name={name}
+              game={game}
+              fetchGameWonByUser={fetchGameWonByUser}
+              gameIndex={gameIndex}
+              lastIndex={lastIndex}/>
+          )}
           <Button text='✕' onClick={hideUserDetail} customClass='user-popup-close-btn'/>
         </div>
     </div>
@@ -53,12 +61,17 @@ const mapStateToProps = (state) => {
   const user = state.user;
   const { game, gameIndex, lastIndex } = state.wonGame;
   return {
-    user, game, gameIndex, lastIndex
+    user, 
+    game, 
+    gameIndex, 
+    lastIndex
   };
 };
 
 const mapDispatchToProps = {
-    setGame, setGameIndex, setLastIndex
+  setGame,
+  setGameIndex,
+  setLastIndex
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserPopup);

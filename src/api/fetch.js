@@ -1,7 +1,4 @@
-const BASE_URL = "http://localhost:3000";
-const LEADER_BOARD_URL = `${BASE_URL}/leaderBoard`;
-const USERS_URL = `${BASE_URL}/users`;
-const GAMES_URL = `${BASE_URL}/games`;
+import { LEADER_BOARD_URL, USERS_URL, GAMES_URL } from "../constants";
 
 export const getLeaderBoardByWins = async () => {
   try {

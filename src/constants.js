@@ -1,3 +1,8 @@
+export const BASE_URL = "http://localhost:3000";
+export const LEADER_BOARD_URL = `${BASE_URL}/leaderBoard`;
+export const USERS_URL = `${BASE_URL}/users`;
+export const GAMES_URL = `${BASE_URL}/games`;
+
 export const SAVE_USERS_BY_WINS = "SAVE_USERS_BY_WINS";
 export const SAVE_USERS_BY_SCORE = "SAVE_USERS_BY_SCORE";
 export const SAVE_USER = "SAVE_USER";

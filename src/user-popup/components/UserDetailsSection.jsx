@@ -21,12 +21,14 @@ const UserDetailsSection = ({ userId, nameFromState, userNameFromState, emailFro
 
   const editForm = () => setIsEditing(true);
 
-  const saveForm = async () => { 
-    const updated = await updateUser(userId, name, username, email);
-    if (updated) {
-      setUserUpdated(true);
-    } else {
-      resetFields();
+  const saveForm = async () => {
+    if (nameFromState !== name || userNameFromState !== username || emailFromState !== email) {
+      const updated = await updateUser(userId, name, username, email);
+      if (updated) {
+        setUserUpdated(true);
+      } else {
+        resetFields();
+      }
     }
     setIsEditing(false);
   }
@@ -45,9 +47,9 @@ const UserDetailsSection = ({ userId, nameFromState, userNameFromState, emailFro
   const renderFields = () => {
     return (
       <div className='text-field-wrap'>
-        <TextField customClass='title-field' id='name' defaultValue={name} isEditing={isEditing} handleChange={setName} />
-        <TextField customClass='subtitle-field' id='username' defaultValue={username} isEditing={isEditing} handleChange={setUsername} />
-        <TextField customClass='subtitle-field' id='email' defaultValue={email} isEditing={isEditing} handleChange={setEmail} />
+        <TextField customClass='title-field' id='name' originalValue={name} isEditing={isEditing} handleChange={setName} />
+        <TextField customClass='subtitle-field' id='username' originalValue={username} isEditing={isEditing} handleChange={setUsername} />
+        <TextField customClass='subtitle-field' id='email' originalValue={email} isEditing={isEditing} handleChange={setEmail} />
       </div>
     )
   }

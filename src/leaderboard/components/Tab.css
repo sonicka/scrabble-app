@@ -1,0 +1,25 @@
+.leader-board-tab {
+  height: 90%;
+  line-height: 60px;
+  display: inline-block;
+  position: relative;
+  bottom: -4px;
+  padding: 0 50px;
+  margin: 10px 2px 0;
+  font-size: 26px;
+  border: 1px solid #716153;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  color: #716153;
+}
+
+.active {
+  height: 100%;
+  line-height: 70px;
+  bottom: -1px;
+  border-bottom: none;
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+  background-color: #ecebe7;
+}

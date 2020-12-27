@@ -4,7 +4,7 @@ import React from 'react';
 import UserStats from '../../components/UserStats';
 import './UserItem.css';
 
-const UserItem = ({ wins, averageScore, losses, onClick, name, activeTab }) => {
+const UserItem = ({ name, wins, averageScore, losses, onClick }) => {
   return (
     <div className='user-item-wrap' onClick={onClick} role='button'>
         <div className='user-item-name'>{name}</div>

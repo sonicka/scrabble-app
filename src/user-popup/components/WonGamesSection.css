@@ -1,16 +1,16 @@
+.won-games-title {
+  margin-bottom: 8px;
+  line-height: 18px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #443a31;
+}
+
 .won-games-wrap {
-  height: 40px;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-}
-
-.won-games-title {
-  margin-bottom: 8px;
-  font-size: 18px;
-  line-height: 18px;
-  font-weight: bold;
-  color: #443a31;
+  height: 40px;
 }
 
 .won-games-text {

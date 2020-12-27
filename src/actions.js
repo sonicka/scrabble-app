@@ -1,13 +1,13 @@
 import {
-  SAVE_USER,
-  SAVE_USERS_BY_SCORE,
   SAVE_USERS_BY_WINS,
-  SET_ACTIVE_TAB,
+  SAVE_USERS_BY_SCORE,
+  SAVE_USER,
   CLEAR_USER,
   SET_USER_UPDATED,
-  SET_GAME,
+  SET_ACTIVE_TAB,
   SET_GAME_INDEX,
   SET_LAST_INDEX,
+  SET_GAME,
   RESET_WON_GAME,
 } from "./constants";
 
@@ -64,15 +64,6 @@ export function setActiveTab(activeTab) {
   };
 }
 
-export function setGame(game) {
-  return (dispatch) => {
-    dispatch({
-      type: SET_GAME,
-      payload: { game },
-    });
-  };
-}
-
 export function setGameIndex(gameIndex) {
   return (dispatch) => {
     dispatch({
@@ -91,7 +82,16 @@ export function setLastIndex(lastIndex) {
   };
 }
 
-export function resetGame() {
+export function setGame(game) {
+  return (dispatch) => {
+    dispatch({
+      type: SET_GAME,
+      payload: { game },
+    });
+  };
+}
+
+export function resetWonGame() {
   return (dispatch) => {
     dispatch({
       type: RESET_WON_GAME,

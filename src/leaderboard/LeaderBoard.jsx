@@ -2,13 +2,14 @@
 import React from 'react';
 import { connect } from "react-redux";
 import UserItem from './components/UserItem';
-import { MOST_WINS_TAB, AVG_SCORE_TAB } from '../constants';
-import { setActiveTab, saveUser } from '../actions';
+import Tab from './components/Tab';
 import { getGameWithHighestScore, getUserById } from '../api/fetch';
+import { setActiveTab, saveUser } from '../actions';
+import { MOST_WINS_TAB, AVG_SCORE_TAB } from '../constants';
 import './LeaderBoard.css';
 
 const LeaderBoard = ({ users, activeTab, setActiveTab, saveUser }) => {
-  const saveUserWithMoreDetails =  async (user) => {
+  const saveUserWithGameDetails =  async (user) => {
     const { userId, highestScore: { against, score } } = user;
     const bestGameResponse =  await getGameWithHighestScore(userId, against, score);
     if (!bestGameResponse) return user;
@@ -23,27 +24,24 @@ const LeaderBoard = ({ users, activeTab, setActiveTab, saveUser }) => {
     saveUser({ ...user, bestGame })
   }
 
+  const renderLeaderBoard = () => users.map(user => 
+    <UserItem 
+      key={user.userId} 
+      name={user.name}
+      wins={user.wins}
+      averageScore={user.averageScore}
+      losses={user.losses}
+      onClick={() => saveUserWithGameDetails(user)} />
+  )
+
   return (
     <div className='leader-board-wrap'>
         <div className='leader-board-tabs'>
-          <div 
-            className={`leader-board-tab ${activeTab === MOST_WINS_TAB ? 'active' : ''}`}
-            onClick={() => setActiveTab(MOST_WINS_TAB)}
-            role='button'>
-              Most wins
-          </div>
-          <div 
-            className={`leader-board-tab ${activeTab === AVG_SCORE_TAB ? 'active' : ''}`}
-            onClick={() => setActiveTab(AVG_SCORE_TAB)}
-            role='button'>
-              Average score
-          </div>
+          <Tab isActive={activeTab === MOST_WINS_TAB} onClick={() => setActiveTab(MOST_WINS_TAB)} text='Most wins' />
+          <Tab isActive={activeTab === AVG_SCORE_TAB} onClick={() => setActiveTab(AVG_SCORE_TAB)} text='Average score' />
         </div>
         <div className='leader-board-users-list'>
-          {users && users.map(user => (
-             <UserItem key={user.userId} {...user} onClick={() => saveUserWithMoreDetails(user)} activeTab={activeTab}/>
-          )
-        )}
+          {users && renderLeaderBoard()}
         </div>
     </div>
   )

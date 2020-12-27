@@ -10,10 +10,9 @@ import {
 import {
   saveUsersByWins,
   saveUsersByScore,
-  saveUser,
   clearUser,
+  resetWonGame,
   setUserUpdated,
-  resetGame,
 } from "./actions";
 import "./App.css";
 
@@ -21,15 +20,15 @@ const App = ({
   saveUsersByWins,
   saveUsersByScore,
   clearUser,
+  resetWonGame,
+  setUserUpdated,
   detailShown,
   userUpdated,
-  setUserUpdated,
-  resetGame,
 }) => {
   useEffect(() => {
     const fetchLeaderBoard = async () => {
-      await loadUsersByScore();
       await loadUsersByWins();
+      await loadUsersByScore();
     };
 
     fetchLeaderBoard();
@@ -37,8 +36,8 @@ const App = ({
 
   useEffect(() => {
     const fetchLeaderBoard = async () => {
-      await loadUsersByScore();
       await loadUsersByWins();
+      await loadUsersByScore();
       setUserUpdated(false);
     };
 
@@ -46,18 +45,6 @@ const App = ({
       fetchLeaderBoard();
     }
   }, [userUpdated]);
-
-  const loadUsersByScore = async () => {
-    const usersByScore = await getLeaderBoardByAvgScore();
-    if (usersByScore) {
-      let updatedUsers = [];
-      for (let user of usersByScore) {
-        const updatedUser = await getUserDetails(user);
-        updatedUsers.push(updatedUser);
-      }
-      saveUsersByScore(updatedUsers);
-    }
-  };
 
   const loadUsersByWins = async () => {
     const usersByWins = await getLeaderBoardByWins();
@@ -71,6 +58,18 @@ const App = ({
     }
   };
 
+  const loadUsersByScore = async () => {
+    const usersByScore = await getLeaderBoardByAvgScore();
+    if (usersByScore) {
+      let updatedUsers = [];
+      for (let user of usersByScore) {
+        const updatedUser = await getUserDetails(user);
+        updatedUsers.push(updatedUser);
+      }
+      saveUsersByScore(updatedUsers);
+    }
+  };
+
   const getUserDetails = async (user) => {
     const userDetails = await getUserById(user.userId);
     const userWithDetails = { ...user, ...userDetails };
@@ -79,7 +78,7 @@ const App = ({
 
   const hideUserDetail = () => {
     clearUser();
-    resetGame();
+    resetWonGame();
   };
 
   return (
@@ -102,10 +101,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   saveUsersByWins,
   saveUsersByScore,
-  saveUser,
   clearUser,
+  resetWonGame,
   setUserUpdated,
-  resetGame,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

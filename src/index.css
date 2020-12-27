@@ -13,19 +13,19 @@ code {
 }
 
 button {
-  background: none;
-  font-size: 14px;
-  border: 1px solid black;
-  border-radius: 6px;
   min-width: 28px;
   min-height: 28px;
   padding: 5px;
+  border: 1px solid black;
+  border-radius: 6px;
   outline: 0;
+  font-size: 14px;
+  background: none;
 }
 
 button:hover {
-  border: 2px solid black;
   padding: 3px;
+  border: 2px solid black;
   font-weight: bold;
 }
 

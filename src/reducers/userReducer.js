@@ -1,13 +1,13 @@
-import * as actions from "../constants";
+import { SAVE_USER, CLEAR_USER } from "../constants";
 
-export const userDetailReducer = (state = null, action) => {
+export const userReducer = (state = null, action) => {
   switch (action.type) {
-    case actions.SAVE_USER:
+    case SAVE_USER:
       return {
         ...state,
         ...action.payload.user,
       };
-    case actions.CLEAR_USER:
+    case CLEAR_USER:
       return null;
     default:
       return state;

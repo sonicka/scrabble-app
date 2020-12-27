@@ -3,13 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import './TextField.css';
 
-const TextField = ({ id, isEditing, defaultValue, handleChange, customClass }) => {
-  const [ value, setValue ] = useState(defaultValue);
+const TextField = ({ id, isEditing, originalValue, handleChange, customClass }) => {
+  const [ value, setValue ] = useState(originalValue);
   const [ isValid, setIsValid ] = useState(true);
 
   useEffect(() => {
     if (!isEditing) {
-      setValue(defaultValue);
+      setValue(originalValue);
       setIsValid(true);
     }
   }, [isEditing]);

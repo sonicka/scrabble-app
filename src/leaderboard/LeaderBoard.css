@@ -5,40 +5,14 @@
 }
 
 .leader-board-tabs {
-  background-color: #d8cec1f2;
   min-height: 80px;
   width: 100%;
   border-bottom: 1px solid #716153;
-}
-
-.leader-board-tab {
-  height: 90%;
-  display: inline-block;
-  font-size: 26px;
-  line-height: 60px;
-  padding: 0 50px;
-  color: #716153;
-  border: 1px solid #716153;
-  border-bottom: none;
-  border-radius: 8px 8px 0 0;
-  margin: 10px 2px 0;
-  position: relative;
-  bottom: -4px;
-}
-
-.active {
-  line-height: 70px;
-  height: 100%;
-  font-weight: bold;
-  border-bottom: none;
-  background-color: #ecebe7;
-  font-size: 30px;
-  color: black;
-  bottom: -1px;
+  background-color: #d8cec1f2;
 }
 
 .leader-board-users-list {
   height: 1050px;
-  background-color: #ecebe7;
   padding-top: 15px;
+  background-color: #ecebe7;
 }

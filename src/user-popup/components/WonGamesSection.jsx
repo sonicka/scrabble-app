@@ -8,7 +8,7 @@ const WonGamesSection = ({ name, game, fetchGameWonByUser, gameIndex, lastIndex 
 
   const renderWonGameText = () => (
     <div className='won-games-text'>
-      {name} vs. {opponentName} ({playerScore} : {opponentScore}) on {new Date(date).toLocaleString()}
+      {name} vs. {opponentName} ({playerScore} : {opponentScore}) {date && `on ${new Date(date).toLocaleString()}`}
     </div>
   )
 
