@@ -59,8 +59,6 @@ export const updateUser = async (userId, name, username, email) => {
 };
 
 export const getGameWithHighestScore = async (playerId, opponentId, score) => {
-  console.log("playerId, opponentId, score");
-  console.log(playerId, opponentId, score);
   try {
     let response;
     let responseJson;
