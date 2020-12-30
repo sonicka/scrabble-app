@@ -5,27 +5,29 @@ import { connect } from "react-redux";
 import TextField from './TextField';
 import Button from './Button';
 import { updateUser } from '../../api/fetch';
-import { setUserUpdated } from '../../actions';
+import { setShouldLoadUsers } from '../../actions';
 import './UserDetailsSection.css';
 
-const UserDetailsSection = ({ userId, nameFromState, userNameFromState, emailFromState, setUserUpdated }) => {
+const UserDetailsSection = ({ userId, nameFromState, userNameFromState, emailFromState, setShouldLoadUsers }) => {
   const [ isEditing, setIsEditing ] = useState(null);
   const [ name, setName ] = useState(nameFromState);
   const [ username, setUsername ] = useState(userNameFromState);
   const [ email, setEmail ] = useState(emailFromState);
   const [ isFormValid, setIsFormValid ] = useState(true);
+  let checkFormValidity;
 
   useEffect(() => {
     setIsFormValid(checkFormValidity());
-  }, [name, username, email]);
+  }, [name, username, email, checkFormValidity]);
 
   const editForm = () => setIsEditing(true);
+  checkFormValidity = () => name && username && email;
 
   const saveForm = async () => {
     if (nameFromState !== name || userNameFromState !== username || emailFromState !== email) {
       const updated = await updateUser(userId, name, username, email);
       if (updated) {
-        setUserUpdated(true);
+        setShouldLoadUsers(true);
       } else {
         resetFields();
       }
@@ -54,8 +56,6 @@ const UserDetailsSection = ({ userId, nameFromState, userNameFromState, emailFro
     )
   }
 
-  const checkFormValidity = () => name && username && email;
-
   const renderButtons = () => {
     if (isEditing) {
       return (
@@ -69,10 +69,10 @@ const UserDetailsSection = ({ userId, nameFromState, userNameFromState, emailFro
   }
 
   return (
-    <>
+    <div className='user-details-section-wrap'>
       {renderFields()}
       {renderButtons()}
-    </>
+    </div>
   )
 }
 
@@ -83,7 +83,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  setUserUpdated
+  setShouldLoadUsers
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserDetailsSection);

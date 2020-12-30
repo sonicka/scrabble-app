@@ -32,7 +32,7 @@
 .user-stats {
   display: flex;
   justify-content: space-evenly;
-  margin: 30px 0;
+  margin-bottom: 30px;
   padding: 0 30px;
   font-size: 28px;
   color: black;

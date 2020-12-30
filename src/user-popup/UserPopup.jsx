@@ -11,15 +11,17 @@ import { setGame, setGameIndex, setLastIndex } from '../actions';
 import './UserPopup.css';
 
 const UserPopup = ({ hideUserDetail, user, game, gameIndex, lastIndex, setGame, setGameIndex, setLastIndex }) => {
- const { userId, name, username, email, averageScore, wins, losses, bestGame: { opponentName, date, score, won } } = user;
+  const { userId, name, username, email, averageScore, wins, losses, bestGame: { opponentName, date, score, won } } = user;
+  let fetchGameWonByUser;
 
   useEffect(() => {
     const fetchWonGame = async () => await fetchGameWonByUser();
-    fetchWonGame();
-  }, []);
+    if (wins) fetchWonGame();
+  }, [fetchGameWonByUser, wins]);
 
-  const fetchGameWonByUser = async (direction) => {
+  fetchGameWonByUser = async (direction) => {
     let nextIndex = gameIndex;
+    if (!direction) setLastIndex(wins < 5 ? wins : 5);
     if (direction) {
       nextIndex = direction === PREV ? gameIndex - 1 : gameIndex + 1;
       setGameIndex(nextIndex)
@@ -32,7 +34,6 @@ const UserPopup = ({ hideUserDetail, user, game, gameIndex, lastIndex, setGame, 
     const opponentScore = response.game.scores.find(score => score.memberId === opponentId)?.score;
     const newGame = { opponentName: opponent.name || '', date, playerScore, opponentScore }
     setGame(newGame);
-    if (!direction) setLastIndex(response.lastIndex < 5 ? response.lastIndex : 5);
   };
 
   return (

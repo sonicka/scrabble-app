@@ -5,7 +5,7 @@ import { usersByScoreReducer } from "./reducers/usersByScoreReducer";
 import { usersByWinsReducer } from "./reducers/usersByWinsReducer";
 import { userReducer } from "./reducers/userReducer";
 import { activeTabReducer } from "./reducers/activeTabReducer";
-import { userUpdatedReducer } from "./reducers/userUpdatedReducer";
+import { shouldLoadUsersReducer } from "./reducers/shouldLoadUsersReducer";
 import { wonGameReducer } from "./reducers/wonGameReducer";
 
 export const rootReducer = combineReducers({
@@ -13,7 +13,7 @@ export const rootReducer = combineReducers({
   usersByWins: usersByWinsReducer,
   user: userReducer,
   activeTab: activeTabReducer,
-  userUpdated: userUpdatedReducer,
+  shouldLoadUsers: shouldLoadUsersReducer,
   wonGame: wonGameReducer,
 });
 

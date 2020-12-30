@@ -34,6 +34,8 @@ const LeaderBoard = ({ users, activeTab, setActiveTab, saveUser }) => {
       onClick={() => saveUserWithGameDetails(user)} />
   )
 
+  const renderErrorMessage = () => <div className='leader-board-error'>Players could not be loaded, please try again later.</div>
+
   return (
     <div className='leader-board-wrap'>
         <div className='leader-board-tabs'>
@@ -41,7 +43,7 @@ const LeaderBoard = ({ users, activeTab, setActiveTab, saveUser }) => {
           <Tab isActive={activeTab === AVG_SCORE_TAB} onClick={() => setActiveTab(AVG_SCORE_TAB)} text='Average score' />
         </div>
         <div className='leader-board-users-list'>
-          {users && renderLeaderBoard()}
+          {users ? renderLeaderBoard() : renderErrorMessage()}
         </div>
     </div>
   )

@@ -12,7 +12,7 @@ import {
   saveUsersByScore,
   clearUser,
   resetWonGame,
-  setUserUpdated,
+  setShouldLoadUsers,
 } from "./actions";
 import "./App.css";
 
@@ -21,53 +21,51 @@ const App = ({
   saveUsersByScore,
   clearUser,
   resetWonGame,
-  setUserUpdated,
+  setShouldLoadUsers,
   detailShown,
-  userUpdated,
+  shouldLoadUsers,
 }) => {
-  useEffect(() => {
-    const fetchLeaderBoard = async () => {
-      await loadUsersByWins();
-      await loadUsersByScore();
-    };
-
-    fetchLeaderBoard();
-  }, []);
+  let loadUsersByWins;
+  let loadUsersByScore;
 
   useEffect(() => {
     const fetchLeaderBoard = async () => {
       await loadUsersByWins();
       await loadUsersByScore();
-      setUserUpdated(false);
+      setShouldLoadUsers(false);
     };
-
-    if (userUpdated) {
+    if (shouldLoadUsers) {
       fetchLeaderBoard();
     }
-  }, [userUpdated]);
+    // }, [shouldLoadUsers]);
+  }, [shouldLoadUsers, loadUsersByWins, loadUsersByScore, setShouldLoadUsers]);
 
-  const loadUsersByWins = async () => {
+  loadUsersByWins = async () => {
     const usersByWins = await getLeaderBoardByWins();
-    if (usersByWins) {
-      let updatedUsers = [];
-      for (let user of usersByWins) {
-        const updatedUser = await getUserDetails(user);
-        updatedUsers.push(updatedUser);
-      }
-      saveUsersByWins(updatedUsers);
+    if (!usersByWins) {
+      saveUsersByWins(usersByWins);
+      return;
     }
+    let updatedUsers = [];
+    for (let user of usersByWins) {
+      const updatedUser = await getUserDetails(user);
+      updatedUsers.push(updatedUser);
+    }
+    saveUsersByWins(updatedUsers);
   };
 
-  const loadUsersByScore = async () => {
+  loadUsersByScore = async () => {
     const usersByScore = await getLeaderBoardByAvgScore();
-    if (usersByScore) {
-      let updatedUsers = [];
-      for (let user of usersByScore) {
-        const updatedUser = await getUserDetails(user);
-        updatedUsers.push(updatedUser);
-      }
-      saveUsersByScore(updatedUsers);
+    if (!usersByScore) {
+      saveUsersByScore(usersByScore);
+      return;
     }
+    let updatedUsers = [];
+    for (let user of usersByScore) {
+      const updatedUser = await getUserDetails(user);
+      updatedUsers.push(updatedUser);
+    }
+    saveUsersByScore(updatedUsers);
   };
 
   const getUserDetails = async (user) => {
@@ -91,10 +89,10 @@ const App = ({
 
 const mapStateToProps = (state) => {
   const detailShown = !!state.user;
-  const userUpdated = state.userUpdated;
+  const shouldLoadUsers = state.shouldLoadUsers;
   return {
     detailShown,
-    userUpdated,
+    shouldLoadUsers,
   };
 };
 
@@ -103,7 +101,7 @@ const mapDispatchToProps = {
   saveUsersByScore,
   clearUser,
   resetWonGame,
-  setUserUpdated,
+  setShouldLoadUsers,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

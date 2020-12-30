@@ -12,7 +12,7 @@ const TextField = ({ id, isEditing, originalValue, handleChange, customClass }) 
       setValue(originalValue);
       setIsValid(true);
     }
-  }, [isEditing]);
+  }, [isEditing, originalValue]);
 
   const handleInputChange = (event) => {
     setValue(event.target.value)

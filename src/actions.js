@@ -3,7 +3,7 @@ import {
   SAVE_USERS_BY_SCORE,
   SAVE_USER,
   CLEAR_USER,
-  SET_USER_UPDATED,
+  SET_SHOULD_LOAD_USERS,
   SET_ACTIVE_TAB,
   SET_GAME_INDEX,
   SET_LAST_INDEX,
@@ -46,10 +46,10 @@ export function clearUser() {
   };
 }
 
-export function setUserUpdated(isUpdated) {
+export function setShouldLoadUsers(isUpdated) {
   return (dispatch) => {
     dispatch({
-      type: SET_USER_UPDATED,
+      type: SET_SHOULD_LOAD_USERS,
       payload: isUpdated,
     });
   };

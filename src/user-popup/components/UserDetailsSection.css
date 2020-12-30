@@ -1,3 +1,7 @@
+.user-details-section-wrap {
+  height: 186px;
+}
+
 .text-field-wrap {
   display: flex;
   flex-direction: column;
@@ -21,11 +25,12 @@
 }
 
 .popup-form-btn {
-  margin: 0 3px;
+  margin: 0 3px 30px;
 }
 
 .popup-edit-btn {
   padding: 0 10px;
+  margin-bottom: 20px;
 }
 
 .popup-edit-btn:hover {

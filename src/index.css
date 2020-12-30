@@ -36,6 +36,7 @@ button:disabled {
 
 button:disabled:hover {
   font-weight: unset;
+  padding: 5px;
 }
 
 input:focus {
