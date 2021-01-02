@@ -29,7 +29,7 @@
   box-shadow: #443a31 4px 4px 8px;
 }
 
-.user-stats {
+.user-popup-stats {
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 30px;

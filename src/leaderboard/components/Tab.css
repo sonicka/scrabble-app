@@ -11,6 +11,11 @@
   border-bottom: none;
   border-radius: 8px 8px 0 0;
   color: #716153;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .active {

@@ -60,12 +60,12 @@ const UserDetailsSection = ({ userId, nameFromState, userNameFromState, emailFro
     if (isEditing) {
       return (
         <>
-          <Button text='Save' onClick={saveForm} customClass='popup-form-btn' disabled={!isFormValid}/>
-          <Button text='Cancel' onClick={cancelEditing} customClass='popup-form-btn'/>
+          <Button text='Save' onClick={saveForm} customClass='form-btn' disabled={!isFormValid}/>
+          <Button text='Cancel' onClick={cancelEditing} customClass='form-btn'/>
         </>
       ) 
     }
-    return <Button text='Edit details' onClick={editForm} customClass='popup-edit-btn'/>
+    return <Button text='Edit details' onClick={editForm} customClass='edit-btn'/>
   }
 
   return (

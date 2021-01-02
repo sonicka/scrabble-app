@@ -27,13 +27,19 @@ const UserPopup = ({ hideUserDetail, user, game, gameIndex, lastIndex, setGame, 
       setGameIndex(nextIndex)
     }
     let response = await getGamesWonByUser(userId, nextIndex);
-    const opponentId = response.game.scores.find(score => score.memberId !== userId).memberId;
-    const opponent = await getUserById(opponentId);
-    const date = response.game.createdAt || '';
-    const playerScore = response.game.scores.find(score => score.memberId === userId)?.score;
-    const opponentScore = response.game.scores.find(score => score.memberId === opponentId)?.score;
-    const newGame = { opponentName: opponent.name || '', date, playerScore, opponentScore }
-    setGame(newGame);
+    if (response) {
+      const opponentId = response.game.scores.find(score => score.memberId !== userId).memberId;
+      if (opponentId) {
+        const opponent = await getUserById(opponentId);
+        if (opponentName) {
+          const date = response.game.createdAt || '';
+          const playerScore = response.game.scores.find(score => score.memberId === userId)?.score;
+          const opponentScore = response.game.scores.find(score => score.memberId === opponentId)?.score;
+          const newGame = { opponentName: opponent.name || '', date, playerScore, opponentScore }
+          setGame(newGame);
+        }
+      }
+    }
   };
 
   return (
@@ -41,7 +47,7 @@ const UserPopup = ({ hideUserDetail, user, game, gameIndex, lastIndex, setGame, 
       <div className='user-popup-overlay' onClick={hideUserDetail} role='button'/>
           <div className='user-popup'>
           <UserDetailsSection name={name} username={username} email={email} />
-          <UserStats wins={wins} averageScore={averageScore} losses={losses} customClass='user-stats'/>
+          <UserStats wins={wins} averageScore={averageScore} losses={losses} customClass='user-popup-stats'/>
           <HighestScoreSection name={name} won={won} score={score} opponent={opponentName} date={date ? new Date(date).toLocaleString() : ''}/>
           {game && ( 
             <WonGamesSection 
