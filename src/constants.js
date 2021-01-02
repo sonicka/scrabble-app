@@ -13,9 +13,13 @@ export const SET_GAME = "SET_GAME";
 export const RESET_WON_GAME = "RESET_WON_GAME";
 export const SET_GAME_INDEX = "SET_GAME_INDEX";
 export const SET_LAST_INDEX = "SET_LAST_INDEX";
+export const SET_IS_LOADING = "SET_IS_LOADING";
 
 export const MOST_WINS_TAB = "most-wins-tab";
 export const AVG_SCORE_TAB = "avg-score-tab";
+
+export const USERS_BY_WINS = "users-by-most-wins";
+export const USERS_BY_SCORE = "users-by-score";
 
 export const PREV = "prev";
 export const NEXT = "next";

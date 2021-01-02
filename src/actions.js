@@ -9,6 +9,7 @@ import {
   SET_LAST_INDEX,
   SET_GAME,
   RESET_WON_GAME,
+  SET_IS_LOADING,
 } from "./constants";
 
 export function saveUsersByWins(users) {
@@ -95,6 +96,18 @@ export function resetWonGame() {
   return (dispatch) => {
     dispatch({
       type: RESET_WON_GAME,
+    });
+  };
+}
+
+export function setIsLoading(key, isLoading) {
+  return (dispatch) => {
+    dispatch({
+      type: SET_IS_LOADING,
+      payload: {
+        key,
+        isLoading,
+      },
     });
   };
 }

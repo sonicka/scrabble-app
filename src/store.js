@@ -7,6 +7,7 @@ import { userReducer } from "./reducers/userReducer";
 import { activeTabReducer } from "./reducers/activeTabReducer";
 import { shouldLoadUsersReducer } from "./reducers/shouldLoadUsersReducer";
 import { wonGameReducer } from "./reducers/wonGameReducer";
+import { isLoadingReducer } from "./reducers/isLoadingReducer";
 
 export const rootReducer = combineReducers({
   usersByScore: usersByScoreReducer,
@@ -15,6 +16,7 @@ export const rootReducer = combineReducers({
   activeTab: activeTabReducer,
   shouldLoadUsers: shouldLoadUsersReducer,
   wonGame: wonGameReducer,
+  isLoading: isLoadingReducer,
 });
 
 export const store = createStore(
