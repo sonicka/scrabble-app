@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/scrabble-app/static/css/main.4eabfe6a.chunk.css",
-    "main.js": "/scrabble-app/static/js/main.b114d821.chunk.js",
-    "main.js.map": "/scrabble-app/static/js/main.b114d821.chunk.js.map",
+    "main.css": "/scrabble-app/static/css/main.f4eb9b47.chunk.css",
+    "main.js": "/scrabble-app/static/js/main.86ea8cae.chunk.js",
+    "main.js.map": "/scrabble-app/static/js/main.86ea8cae.chunk.js.map",
     "runtime-main.js": "/scrabble-app/static/js/runtime-main.c0a1fb0d.js",
     "runtime-main.js.map": "/scrabble-app/static/js/runtime-main.c0a1fb0d.js.map",
-    "static/js/2.bc1f3745.chunk.js": "/scrabble-app/static/js/2.bc1f3745.chunk.js",
-    "static/js/2.bc1f3745.chunk.js.map": "/scrabble-app/static/js/2.bc1f3745.chunk.js.map",
+    "static/js/2.181d6d7d.chunk.js": "/scrabble-app/static/js/2.181d6d7d.chunk.js",
+    "static/js/2.181d6d7d.chunk.js.map": "/scrabble-app/static/js/2.181d6d7d.chunk.js.map",
     "index.html": "/scrabble-app/index.html",
-    "static/css/main.4eabfe6a.chunk.css.map": "/scrabble-app/static/css/main.4eabfe6a.chunk.css.map",
-    "static/js/2.bc1f3745.chunk.js.LICENSE.txt": "/scrabble-app/static/js/2.bc1f3745.chunk.js.LICENSE.txt"
+    "static/css/main.f4eb9b47.chunk.css.map": "/scrabble-app/static/css/main.f4eb9b47.chunk.css.map",
+    "static/js/2.181d6d7d.chunk.js.LICENSE.txt": "/scrabble-app/static/js/2.181d6d7d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c0a1fb0d.js",
-    "static/js/2.bc1f3745.chunk.js",
-    "static/css/main.4eabfe6a.chunk.css",
-    "static/js/main.b114d821.chunk.js"
+    "static/js/2.181d6d7d.chunk.js",
+    "static/css/main.f4eb9b47.chunk.css",
+    "static/js/main.86ea8cae.chunk.js"
   ]
 }
