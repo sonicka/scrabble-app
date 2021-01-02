@@ -2,9 +2,7 @@
 
 This app is a front-end for app showing leader board of Scrabble players. Mock API is configured in `docker-compose.yml` file.
 
-To run locally, in project folder use `docker-compose up` to run the api and `npm start` to run the front-end.
-
-Deployed preview available [here](https://sonicka.github.io/scrabble-app/).
+To run locally, in project folder use `docker-compose up` to run the API and `npm start` to run the front-end.
 
 ## Features contained
 
@@ -16,4 +14,4 @@ Deployed preview available [here](https://sonicka.github.io/scrabble-app/).
 ## Technologies used
 
 App is built in [React](https://reactjs.org/), the project scaffolding was created with [Create React App](https://github.com/facebook/create-react-app).
-It uses [Redux](https://redux.js.org/) for state management. 
+[Redux](https://redux.js.org/) is used for state management. 
