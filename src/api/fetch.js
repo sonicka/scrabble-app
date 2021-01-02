@@ -58,7 +58,7 @@ export const updateUser = async (userId, name, username, email) => {
   }
 };
 
-export const getGameWithHighestScore = async (playerId, opponentId, score) => {
+export const getBestGame = async (playerId, score) => {
   try {
     let response;
     let responseJson;
@@ -81,7 +81,7 @@ export const getGameWithHighestScore = async (playerId, opponentId, score) => {
         ) > -1
     );
   } catch (error) {
-    console.error("Getting game with highest score failed: ", error);
+    console.error("Getting best game failed: ", error);
     return null;
   }
 };

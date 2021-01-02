@@ -37,15 +37,11 @@ const App = ({
     if (shouldLoadUsers) {
       fetchLeaderBoard();
     }
-    // }, [shouldLoadUsers]);
   }, [shouldLoadUsers, loadUsersByWins, loadUsersByScore, setShouldLoadUsers]);
 
   loadUsersByWins = async () => {
     const usersByWins = await getLeaderBoardByWins();
-    if (!usersByWins) {
-      saveUsersByWins(usersByWins);
-      return;
-    }
+    if (!usersByWins) return;
     let updatedUsers = [];
     for (let user of usersByWins) {
       const updatedUser = await getUserDetails(user);
@@ -56,10 +52,7 @@ const App = ({
 
   loadUsersByScore = async () => {
     const usersByScore = await getLeaderBoardByAvgScore();
-    if (!usersByScore) {
-      saveUsersByScore(usersByScore);
-      return;
-    }
+    if (!usersByScore) return;
     let updatedUsers = [];
     for (let user of usersByScore) {
       const updatedUser = await getUserDetails(user);

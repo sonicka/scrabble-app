@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import UserItem from './components/UserItem';
 import Tab from './components/Tab';
-import { getGameWithHighestScore, getUserById } from '../api/fetch';
+import { getBestGame, getUserById } from '../api/fetch';
 import { setActiveTab, saveUser } from '../actions';
 import { MOST_WINS_TAB, AVG_SCORE_TAB } from '../constants';
 import './LeaderBoard.css';
@@ -11,7 +11,7 @@ import './LeaderBoard.css';
 const LeaderBoard = ({ users, activeTab, setActiveTab, saveUser }) => {
   const saveUserWithGameDetails =  async (user) => {
     const { userId, highestScore: { against, score } } = user;
-    const bestGameResponse =  await getGameWithHighestScore(userId, against, score);
+    const bestGameResponse =  await getBestGame(userId, score);
     if (!bestGameResponse) return user;
     const opponent = await getUserById(against);
     const bestGame = {
@@ -43,7 +43,7 @@ const LeaderBoard = ({ users, activeTab, setActiveTab, saveUser }) => {
           <Tab isActive={activeTab === AVG_SCORE_TAB} onClick={() => setActiveTab(AVG_SCORE_TAB)} text='Average score' />
         </div>
         <div className='leader-board-users-list'>
-          {users ? renderLeaderBoard() : renderErrorMessage()}
+          {users.length ? renderLeaderBoard() : renderErrorMessage()}
         </div>
     </div>
   )
